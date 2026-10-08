@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoHelpr</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body class="side-panel">
+  <header>
+    <h1>GeoHelpr</h1>
+    <p class="subtitle">Side panel · updates when rounds change</p>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button type="button" class="tab active" data-tab="results" role="tab" aria-selected="true">Results</button>
+    <button type="button" class="tab" data-tab="tips" role="tab" aria-selected="false">Tips</button>
+    <button type="button" class="tab" data-tab="help" role="tab" aria-selected="false">Help</button>
+  </nav>
+
+  <section id="panel-results" class="panel" role="tabpanel">
+    <p id="modeWarning" class="mode-warning hidden" role="alert">
+      Competitive / ranked mode detected — GeoHelpr is intended for solo practice only.
+    </p>
+    <p id="status" class="status" aria-live="polite">Waiting for an active GeoGuessr round…</p>
+    <div id="results" class="results hidden"></div>
+    <details id="sessionLog" class="session-log hidden">
+      <summary>Session history</summary>
+      <ul id="sessionLogList"></ul>
+      <button type="button" id="clearSessionBtn" class="secondary session-clear">Clear history</button>
+    </details>
+  </section>
+
+  <section id="panel-tips" class="panel hidden" role="tabpanel">
+    <p id="tipsStatus" class="status" aria-live="polite"></p>
+    <div id="tipsContent" class="tips-content">
+      <p class="tips-empty">Tips load automatically when a round is detected.</p>
+    </div>
+  </section>
+
+  <section id="panel-help" class="panel hidden" role="tabpanel">
+    <article class="help-doc">
+      <h2>Getting started</h2>
+      <ol>
+        <li>Sign in at <strong>geoguessr.com</strong> in this browser.</li>
+        <li>Start a solo game and open GeoHelpr from the toolbar.</li>
+        <li>Play on the GeoGuessr tab — new rounds sync from the page instantly.</li>
+      </ol>
+
+      <h2>What you’ll see</h2>
+      <ul>
+        <li><strong>Map</strong> — OpenStreetMap preview of the round location.</li>
+        <li><strong>Nearest town</strong> — largest nearby settlement.</li>
+        <li><strong>Position in country</strong> — region + compass area within the country.</li>
+        <li><strong>Elevation</strong> — metres above sea level (Open-Meteo).</li>
+        <li><strong>Distance to capital</strong> — km to that country’s capital city.</li>
+        <li><strong>Your guess</strong> — distance error and score after you guess (when the API provides it).</li>
+        <li><strong>Tips tab</strong> — Plonkit clues, refreshed each round.</li>
+      </ul>
+
+      <h2>Fair play</h2>
+      <p class="help-note">
+        GeoHelpr is for <strong>educational solo practice</strong>. Avoid use in ranked,
+        competitive, or multiplayer modes.
+      </p>
+    </article>
+  </section>
+
+  <footer>
+    <p>For educational use only.</p>
+  </footer>
+
+  <script src="capitals.js"></script>
+  <script src="country-compass.js"></script>
+  <script src="geography.js"></script>
+  <script src="plonkit.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

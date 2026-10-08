@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "GeoHelpr",
+  "version": "2.2.0",
+  "description": "GeoHelpr side panel: instant round sync, map, elevation, capital distance, guess review, and Plonkit tips.",
+  "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.geoguessr.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": {
+    "default_path": "popup.html?panel=1"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://www.geoguessr.com/*",
+    "https://nominatim.openstreetmap.org/*",
+    "https://www.plonkit.net/*",
+    "https://api.open-meteo.com/*",
+    "https://www.openstreetmap.org/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "GeoHelpr",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  }
+}
